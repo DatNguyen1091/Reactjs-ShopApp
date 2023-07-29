@@ -1,5 +1,7 @@
-import React,{Component} from "react";
-import {variables} from './Variables.js';
+import React,{Component}  from "react";
+import {variables} from '../constants/Variables.js';
+import Pagination from "../constants/Pagination.js";
+import AdminNav from "../constants/AdminNav.js";
 
 export class ProductsList extends Component{
     
@@ -23,18 +25,19 @@ export class ProductsList extends Component{
             IsFeatured: true,
             Quantity: 0,
             ProductStatus: "active",
-            IsDeleted: true
+            IsDeleted: true,
         }
     }
 
     // GET Product
     refreshList(){
-        fetch(variables.API_URL+'Products')
+        fetch(variables.API_URL+'Products?page=' + 1)
         .then(response => response.json())
         .then(data => {
             this.setState({products: data})
         })
         .catch(error => console.log('Error fetching products:', error));
+        
     }
 
     componentDidMount(){
@@ -246,16 +249,30 @@ export class ProductsList extends Component{
             IsDeleted 
         } = this.state;
 
-        return(
-        <div className="container">
-            <h1>DANH SÁCH SẢN PHẨM</h1>
+        return(   
+        <div className="container-xxl">
+        
+            {/* NAV */}
+            <AdminNav/>
 
+            <div className="text-center"> 
+                <div className="d-inline-block">
+                    <h1>DANH SÁCH SẢN PHẨM</h1>
+                </div>
+            </div>
+            
+            {/* Thêm mới sản phẩm */}
             <button type="button" className="btn btn-primary m-3 float-end"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 onClick={()=>this.addClick()}> 
                 Thêm mới sản phẩm  
             </button>
+            
+            {/* Truyền hàm xử lý cho Pagination */}
+            <div className="m-3">
+                <Pagination/>
+            </div>
 
             <table className='table table-bordered table-hover'>
                 <thead>

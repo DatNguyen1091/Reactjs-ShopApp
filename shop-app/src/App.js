@@ -5,6 +5,8 @@ import Home from './components/Home';
 
 // Admin Imports
 import ProductsList from './components/admin/ProductsList';
+import Category from './components/admin/Category';
+import Order from './components/admin/Order';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path='/admin/productsList' element={<ProductsList/>}/>
+          <Route path='/admin/category' element={<Category/>}/>
+          <Route path='/admin/order' element={<Order/>}/>
         </Routes>
       </div>
     </BrowserRouter>
