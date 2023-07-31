@@ -10,11 +10,6 @@ const Footer = () => {
               <div className="logo_footer">
                 <a href="/"><img width="210" src="images/logoUku.png" alt="#" /></a>
               </div>
-              <div className="information_f">
-                <p><strong>Địa chỉ:</strong> Biên Hòa, Vietnam</p>
-                <p><strong>Số điện thoại:</strong> 034 833 5241</p>
-                <p><strong>Email:</strong> sopheo2407@gmail.com</p>
-              </div>
             </div>
           </div>
           <div className="col-md-8">

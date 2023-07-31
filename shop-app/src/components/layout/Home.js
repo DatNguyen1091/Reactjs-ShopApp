@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbav from "./constants/Navbav";
 import Whyus from "./constants/Whyus";
-import ProductList from "./constants/ProductList";
 import Client from "./constants/Client";
 import Footer from "./constants/Footer";
 
@@ -10,14 +9,18 @@ class Home extends Component {
     return (
       <div className="container-flut">
         <div className="hero_area">
-          { /*header section*/ }
+          {/*header section*/}
           <Navbav></Navbav>
-          { /*slider section*/ }
+          {/*slider section*/}
           <section className="slider_section">
             <div className="slider_bg_box">
               <img src="images/done3.png" alt="" />
             </div>
-            <div id="customCarousel1" className="carousel slide" data-ride="carousel">
+            <div
+              id="customCarousel1"
+              className="carousel slide"
+              data-ride="carousel"
+            >
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="container">
@@ -25,15 +28,11 @@ class Home extends Component {
                       <div className="col-md-7 col-lg-6">
                         <div className="detail-box">
                           <h1>
-                            <span>
-                              Sale 20% Off
-                            </span>
+                            <span>Sale 20% Off</span>
                             <br />
                             Ukulele
                           </h1>
-                          <p>
-                            Viết gì đó
-                          </p>
+                          <p>Viết gì đó</p>
                           <div className="btn-box">
                             <a href="/" className="btn1">
                               Mua ngay!
@@ -50,15 +49,11 @@ class Home extends Component {
                       <div className="col-md-7 col-lg-6">
                         <div className="detail-box">
                           <h1>
-                            <span>
-                              Sale 20% Off
-                            </span>
+                            <span>Sale 20% Off</span>
                             <br />
                             Ukulele
                           </h1>
-                          <p>
-                            Viết gì đó
-                          </p>
+                          <p>Viết gì đó</p>
                           <div className="btn-box">
                             <a href="/" className="btn1">
                               Mua ngay!
@@ -75,15 +70,11 @@ class Home extends Component {
                       <div className="col-md-7 col-lg-6">
                         <div className="detail-box">
                           <h1>
-                            <span>
-                              Sale 20% Off
-                            </span>
+                            <span>Sale 20% Off</span>
                             <br />
                             Ukulele
                           </h1>
-                          <p>
-                            Viết gì đó
-                          </p>
+                          <p>Viết gì đó</p>
                           <div className="btn-box">
                             <a href="/" className="btn1">
                               Mua ngay!
@@ -97,7 +88,11 @@ class Home extends Component {
               </div>
               <div className="container">
                 <ol className="carousel-indicators">
-                  <li data-target="#customCarousel1" data-slide-to="0" className="active"></li>
+                  <li
+                    data-target="#customCarousel1"
+                    data-slide-to="0"
+                    className="active"
+                  ></li>
                   <li data-target="#customCarousel1" data-slide-to="1"></li>
                   <li data-target="#customCarousel1" data-slide-to="2"></li>
                 </ol>
@@ -105,13 +100,92 @@ class Home extends Component {
             </div>
           </section>
         </div>
-        { /*why section*/ }
+        {/*why section*/}
         <Whyus></Whyus>
 
-        { /*product section*/ }
-        <ProductList></ProductList>
-
-        { /*subscribe section*/ }
+        {/*product section*/}
+        <section className="product_section layout_padding">
+          <div className="container">
+            <div className="heading_container heading_center">
+              <h2>
+                Sản Phẩm <span>Của chúng tôi</span>
+              </h2>
+            </div>
+            <div className="row">
+              {/* Product*/}
+              <div className="col-sm-6 col-md-4 col-lg-4">
+                  <div className="box">
+                     <div className="option_container">
+                        <div className="options">
+                           <a href="/" className="option1">
+                           Xem chi tiết
+                           </a>
+                           <a href="/" className="option2">
+                           Mua ngay
+                           </a>
+                        </div>
+                     </div>
+                     <div className="img-box">
+                        <img src="images/p1.png" alt=""/>
+                     </div>
+                     <div className="detail-box" style={{display: "flex" ,justifyContent: "center"}}>
+                        <h5>
+                           Ukulele màu đen
+                        </h5>
+                     </div>
+                  </div>
+               </div>
+               <div className="col-sm-6 col-md-4 col-lg-4">
+                  <div className="box">
+                     <div className="option_container">
+                        <div className="options">
+                          <a href="/" className="option1">
+                          Xem chi tiết
+                          </a>
+                          <a href="/" className="option2">
+                          Mua ngay
+                          </a>
+                        </div>
+                     </div>
+                     <div className="img-box">
+                        <img src="images/p4.jpg" alt=""/>
+                     </div>
+                     <div className="detail-box" style={{display: "flex" ,justifyContent: "center"}}>
+                        <h5>
+                           Ukulele Vitage
+                        </h5>
+                     </div>
+                  </div>
+               </div>
+               <div className="col-sm-6 col-md-4 col-lg-4">
+                  <div className="box">
+                     <div className="option_container">
+                        <div className="options">
+                          <a href="/" className="option1">
+                          Xem chi tiết
+                          </a>
+                          <a href="/" className="option2">
+                          Mua ngay
+                          </a>
+                        </div>
+                     </div>
+                     <div className="img-box">
+                        <img src="images/p3.jpg" alt=""/>
+                     </div>
+                     <div className="detail-box" style={{display: "flex" ,justifyContent: "center"}}>
+                        <h5>
+                           Ukulele màu gỗ
+                        </h5>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div className="btn-box">
+              <a href="/products">Xem tất cả sản phẩm</a>
+            </div>
+          </div>
+        </section>
+        {/*subscribe section*/}
         <section className="subscribe_section">
           <div className="container-fuild">
             <div className="box">
@@ -123,10 +197,9 @@ class Home extends Component {
                     </div>
                     <p>Rất hân hạnh vì điều này!</p>
                     <form action="">
-                      <input type="email" placeholder="Nhập email của bạn" />
-                      <button>
-                        Đăng ký
-                      </button>
+                      <button>Đăng ký</button>
+                      <button>Đăng Nhập</button>
+                      <span>Nếu bạn đã có tài khoảng!</span>
                     </form>
                   </div>
                 </div>
@@ -134,12 +207,11 @@ class Home extends Component {
             </div>
           </div>
         </section>
-        { /*client section*/ }
+        {/*client section*/}
         <Client></Client>
 
-        { /*Footer section*/ }
+        {/*Footer section*/}
         <Footer></Footer>
-        
       </div>
     );
   }
