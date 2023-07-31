@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Navbav from "./constants/Navbav";
 import Whyus from "./constants/Whyus";
 import ProductList from "./constants/ProductList";
+import Client from "./constants/Client";
+import Footer from "./constants/Footer";
 
 class Home extends Component {
   render() {
@@ -132,6 +134,12 @@ class Home extends Component {
             </div>
           </div>
         </section>
+        { /*client section*/ }
+        <Client></Client>
+
+        { /*Footer section*/ }
+        <Footer></Footer>
+        
       </div>
     );
   }
