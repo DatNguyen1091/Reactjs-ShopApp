@@ -8,7 +8,7 @@ const ProductList = () => {
   
   const fetchData = async () => {
     try {
-      const response = await fetch('https://localhost:7249/api/Products'); // Thay thế URL bằng API endpoint thực tế
+      const response = await fetch('https://localhost:7249/api/Products');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (error) {
