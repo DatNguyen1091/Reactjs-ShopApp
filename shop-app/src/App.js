@@ -1,12 +1,14 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Home from './components/Home';
+// Layout 
+import Home from './components/layout/Home';
+import About from './components/layout/About';
+import Blog from './components/layout/Blog';
+import Contact from './components/layout/Contact';
+import Products from './components/layout/Products';
+import Testimonial from './components/layout/Testimonial';
 
-// Admin Imports
-import ProductsList from './components/admin/ProductsList';
-import Category from './components/admin/Category';
-import Order from './components/admin/Order';
 
 function App() {
   return (
@@ -15,9 +17,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/admin/productsList' element={<ProductsList/>}/>
-          <Route path='/admin/category' element={<Category/>}/>
-          <Route path='/admin/order' element={<Order/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/blog' element={<Blog/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/products' element={<Products/>}/>
+          <Route path='/testimonial' element={<Testimonial/>}/>
         </Routes>
       </div>
     </BrowserRouter>
