@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import { ApiUrl } from './ApiUrl';
 
 const ProductList = () => {
@@ -31,10 +32,10 @@ const ProductList = () => {
               <div className="box">
                   <div className="option_container">
                     <div className="options">
-                      <a href="/" className="option1">
+                    <Link to={`/products/productdetail/${product.id}`} className="option1">
                       Xem chi tiết
-                      </a>
-                      <a href="/" className="option2">
+                    </Link>
+                      <a href="/cart" className="option2">
                       Mua ngay
                       </a>
                   </div>
@@ -42,7 +43,7 @@ const ProductList = () => {
                   <div className="img-box">
                     <img src={product.imageUrl} alt=""/>
                   </div>
-                  <div className="detail-box" style={{display: "flex" ,justifyContent: "center"}}>
+                  <div className="detail-box" style={{display: "flex" , justifyContent: "center"}}>
                     <h5>
                         {product.name}
                         <h6>Giá: {product.price} vnd</h6>

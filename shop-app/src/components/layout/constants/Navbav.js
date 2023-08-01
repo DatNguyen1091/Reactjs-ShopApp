@@ -3,7 +3,7 @@ import React from 'react';
 export const Navbav = () => {
 
   return (
-    <header class="header_section">
+    <header className="header_section">
             <div className="container">
                 <nav className="navbar navbar-expand-lg custom_nav-container">
                     <a className="navbar-brand" href="/home" style={{ float: "left" }}>
@@ -26,7 +26,6 @@ export const Navbav = () => {
                             <li className="nav-item active">
                             <a className="nav-link" href="/home">
                                 Trang chủ 
-                                <span className="sr-only">(current)</span>
                             </a>
                             </li>
                         
@@ -52,13 +51,13 @@ export const Navbav = () => {
                             </a>
                             <ul className="dropdown-menu">
                                 <li>
-                                <a href="/">Đăng ký</a>
+                                <a href="/register">Đăng ký</a>
                                 </li>
                                 <li>
-                                <a href="/">Đăng nhập</a>
+                                <a href="/login">Đăng nhập</a>
                                 </li>
                                 <li>
-                                <a href="/">Trang quản trị</a>
+                                <a href="/admin">Trang quản trị</a>
                                 </li>
                             </ul>
                             </li>

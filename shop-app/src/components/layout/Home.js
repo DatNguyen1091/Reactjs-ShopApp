@@ -117,10 +117,10 @@ class Home extends Component {
                   <div className="box">
                      <div className="option_container">
                         <div className="options">
-                           <a href="/" className="option1">
+                           <a href="/products" className="option1">
                            Xem chi tiết
                            </a>
-                           <a href="/" className="option2">
+                           <a href="/products" className="option2">
                            Mua ngay
                            </a>
                         </div>
@@ -196,9 +196,11 @@ class Home extends Component {
                       <h3>Đăng ký để nhận ưu đãi giảm giá</h3>
                     </div>
                     <p>Rất hân hạnh vì điều này!</p>
-                    <form action="">
-                      <button>Đăng ký</button>
-                      <button>Đăng Nhập</button>
+                    <form action="/register">
+                      <button type="submit">Đăng ký</button>
+                    </form>
+                    <form action="/login">
+                      <button type="submit">Đăng Nhập</button>
                       <span>Nếu bạn đã có tài khoảng!</span>
                     </form>
                   </div>
