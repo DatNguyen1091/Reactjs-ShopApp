@@ -29,39 +29,40 @@ export const Navbav = () => {
                                 <span className="sr-only">(current)</span>
                             </a>
                             </li>
-                            
-                            <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
-                                aria-haspopup="true"
-                                aria-expanded="true"
-                            >
-                                <span className="nav-label">Trang</span>
-                                <span className="caret"></span>
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li>
-                                <a href="/about">Về chúng tôi</a>
-                                </li>
-                                <li>
-                                <a href="/testimonial">Chứng thực</a>
-                                </li>
-                            </ul>
-                            </li>
+                        
                             <li className="nav-item">
                             <a className="nav-link" href="/products">
                                 Sản Phẩm
                             </a>
                             </li>
-                            <li className="nav-item">
-                            <a className="nav-link" href="/blog">
-                                Blog
-                            </a>
-                            </li>
+
                             <li className="nav-item">
                             <a className="nav-link" href="/contact">
                                 Liên hệ
                             </a>
                             </li>
+
+                            <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                            >
+                                <span className="nav-label">Tài khoảng</span>
+                                <span className="caret"></span>
+                            </a>
+                            <ul className="dropdown-menu">
+                                <li>
+                                <a href="/">Đăng ký</a>
+                                </li>
+                                <li>
+                                <a href="/">Đăng nhập</a>
+                                </li>
+                                <li>
+                                <a href="/">Trang quản trị</a>
+                                </li>
+                            </ul>
+                            </li>
+
                             <li className="nav-item">
                             <a className="nav-link" href="/">
                                 <svg
@@ -111,7 +112,7 @@ export const Navbav = () => {
                 </nav>
             </div>
         </header>
-  );
+    );
 };
 
 export default Navbav;
