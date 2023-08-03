@@ -21,7 +21,7 @@ const Login = () => {
         axios.post(ApiUrl.Api + 'Users/Login', loginData)
         .then(response => {
           console.log(response.data);
-          alert("Đăng nhập thành công!");
+          window.location.href = '/home';
         })
         .catch(error => {
           console.error(error.response.data); 
