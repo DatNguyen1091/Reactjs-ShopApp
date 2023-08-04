@@ -7,10 +7,12 @@ class Dashboard extends Component {
   render() {
     return (
         <div className="container-flut">
-            {/* sgdgds */}
+            {/* Sidebar */}
             <Sidebar></Sidebar>
-            {/* sgdgds */}
+
+            {/* Sidenav */}
             <Sidenav></Sidenav>
+
         </div>
     );
   }
