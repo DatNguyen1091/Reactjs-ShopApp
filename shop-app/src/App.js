@@ -44,7 +44,10 @@ function App() {
           <Route path='/admin/customers' element={<AdCustomer />}/>
           <Route path='/admin/feedbacks' element={<AdFeedback />}/>
           <Route path='/admin/orders' element={<AdOrder />}/>
+
+          <Route path='/admin/products/:page' element={<AdProduct />}/>
           <Route path='/admin/products' element={<AdProduct />}/>
+          
           <Route path='/admin/accounts' element={<AdUser />}/>
         </Routes>
       </div>
