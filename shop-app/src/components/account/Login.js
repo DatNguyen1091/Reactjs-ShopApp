@@ -5,47 +5,42 @@ import jwt_decode from 'jwt-decode';
 import { ApiUrl } from '../layout/constants/ApiUrl';
 
 const Login = () => {
-    // eslint-disable-next-line no-unused-vars
-    const [id, setId] = useState(0);
     const [username, setUsername] = useState('');
-     // eslint-disable-next-line no-unused-vars
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-     // eslint-disable-next-line no-unused-vars
-    const [isAdmin, setIsAdmin] = useState(false);
      // eslint-disable-next-line no-unused-vars
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn'));
 
     const handleLogin = () => {
         const loginData = {
-          id : setId,
           username: username,
-          email: setEmail,
           password: password,
-          isAdmin: setIsAdmin,
         };
+      
         axios.post(ApiUrl.Api + 'Users/Login', loginData)
-        .then(response => {
-          const token = response.data.data;
-          localStorage.setItem('accessToken', token);
-          setIsLoggedIn(true);
-          localStorage.setItem('isLoggedIn', 'true');
+          .then(response => {
+            const token = response.data.data;
+            localStorage.setItem('accessToken', token);
+            setIsLoggedIn(true);
+            localStorage.setItem('isLoggedIn', 'true');
+      
+            const decodedToken = jwt_decode(token);
+            const roleFromToken = decodedToken.role;
+            localStorage.setItem('UserRole', roleFromToken);
 
-          // Giải mã token để lấy thông tin người dùng
-          const decodedToken = jwt_decode(token);
-          const usernameFromToken = decodedToken.unique_name; 
-          localStorage.setItem('UsernameLogin', usernameFromToken);
-            
-          console.log(response.data);
-          window.location.href = '/home';
-        })
-        .catch(error => {
-          setIsLoggedIn(false);
-          localStorage.setItem('isLoggedIn', 'false');
-          console.error(error.response.data); 
-          alert("Đăng nhập thất bại!");
-        });
-    };
+            const usernameFromToken = decodedToken.unique_name;
+            localStorage.setItem('UsernameLogin', usernameFromToken);
+            alert(roleFromToken + " : " + usernameFromToken);
+            console.log(response.data);
+            window.location.href = '/home';
+          })
+          .catch(error => {
+            setIsLoggedIn(false);
+            localStorage.setItem('isLoggedIn', 'false');
+            console.error(error.response.data);
+            alert("Đăng nhập thất bại!");
+          });
+      };
+      
   return (
     <div>
         <header className="header_section" style={{backgroundColor: "aqua"}}>

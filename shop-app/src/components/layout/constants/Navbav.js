@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 export const Navbav = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
     const usernameLogIn = useState(localStorage.getItem('UsernameLogin'));
+    const IsAdminLogIn = useState(localStorage.getItem('UserRole') === "Admin");
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
@@ -68,12 +69,17 @@ export const Navbav = () => {
                                         <li>
                                         <a href="/" onClick={handleLogout}>Đăng xuất</a>
                                         </li>
-                                        <li>
-                                        <a href="/admin">Trang quản trị</a>
-                                        </li>
+
+                                        {IsAdminLogIn ? (
+                                            <li>
+                                            <a href="/admin">Trang quản trị</a>
+                                            </li>
+                                        ):(
+                                            null
+                                        )}
                                     </ul>
                                 </li>
-                            ) : (
+                                ) : (
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
                                         aria-haspopup="true"
