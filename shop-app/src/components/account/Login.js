@@ -4,17 +4,22 @@ import axios from 'axios';
 import { ApiUrl } from '../layout/constants/ApiUrl';
 
 const Login = () => {
-    const [setId] = useState(0);
+    // eslint-disable-next-line no-unused-vars
+    const [id, setId] = useState(0);
     const [username, setUsername] = useState('');
-    const [email] = useState('string');
+     // eslint-disable-next-line no-unused-vars
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [setIsAdmin] = useState(true);
+     // eslint-disable-next-line no-unused-vars
+    const [isAdmin, setIsAdmin] = useState(false);
+     // eslint-disable-next-line no-unused-vars
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn'));
 
     const handleLogin = () => {
         const loginData = {
           id : setId,
           username: username,
-          email: email,
+          email: setEmail,
           password: password,
           isAdmin: setIsAdmin,
         };
@@ -22,10 +27,14 @@ const Login = () => {
         .then(response => {
           const token = response.data.data;
           localStorage.setItem('accessToken', token);
+          setIsLoggedIn(true);
+          localStorage.setItem('isLoggedIn', 'true');
           console.log(response.data);
           window.location.href = '/home';
         })
         .catch(error => {
+          setIsLoggedIn(false);
+          localStorage.setItem('isLoggedIn', 'false');
           console.error(error.response.data); 
           alert("Đăng nhập thất bại!");
         });
