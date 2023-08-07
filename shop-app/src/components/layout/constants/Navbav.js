@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 
 export const Navbav = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+
+        setIsLoggedIn(false);
+        localStorage.setItem('isLoggedIn', 'false');
+
+        window.location.href = '/login';
+      };
 
   return (
     <header className="header_section">
@@ -21,6 +32,7 @@ export const Navbav = () => {
                     >
                     <span className=""> </span>
                     </button>
+
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav">
                             <li className="nav-item active">
@@ -41,26 +53,46 @@ export const Navbav = () => {
                             </a>
                             </li>
 
-                            <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
-                                aria-haspopup="true"
-                                aria-expanded="true"
-                            >
-                                <span className="nav-label">Tài khoảng</span>
-                                <span className="caret"></span>
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li>
-                                <a href="/register">Đăng ký</a>
+                            {isLoggedIn ? (
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true"
+                                        aria-expanded="true"
+                                    >
+                                        <span className="nav-label">Tài khoảng</span>
+                                        <span className="caret"></span>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                        <a href="/">Quản lý tài khoảng</a>
+                                        </li>
+                                        <li>
+                                        <a href="/" onClick={handleLogout}>Đăng xuất</a>
+                                        </li>
+                                        <li>
+                                        <a href="/admin">Trang quản trị</a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                <a href="/login">Đăng nhập</a>
+                            ) : (
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="/" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true"
+                                        aria-expanded="true"
+                                    >
+                                        <span className="nav-label">Tài khoảng</span>
+                                        <span className="caret"></span>
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                        <a href="/register">Đăng ký</a>
+                                        </li>
+                                        <li>
+                                        <a href="/login">Đăng nhập</a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li>
-                                <a href="/admin">Trang quản trị</a>
-                                </li>
-                            </ul>
-                            </li>
+                              )}
 
                             <li className="nav-item">
                             <a className="nav-link" href="/">
