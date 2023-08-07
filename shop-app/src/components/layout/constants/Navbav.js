@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 
 export const Navbav = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+    const usernameLogIn = useState(localStorage.getItem('UsernameLogin'));
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-
         setIsLoggedIn(false);
         localStorage.setItem('isLoggedIn', 'false');
-
         window.location.href = '/login';
-      };
+    };
 
   return (
     <header className="header_section">
@@ -59,7 +58,7 @@ export const Navbav = () => {
                                         aria-haspopup="true"
                                         aria-expanded="true"
                                     >
-                                        <span className="nav-label">Tài khoảng</span>
+                                        <span className="nav-label">{usernameLogIn}</span>
                                         <span className="caret"></span>
                                     </a>
                                     <ul className="dropdown-menu">
