@@ -5,19 +5,19 @@ import Sidenav from "./adminConstants/Sidenav";
 import { ApiUrl } from '../layout/constants/ApiUrl';
 
 const AdUser = () => {
-  const [users, setPsers] = useState([]);
+  const [users, setUsers] = useState([]);
   const [modalTitle, setModalTitle] = useState("");
   const [id, setId] = useState(0);
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [Email, setEmail] = useState("");
-  const [IsAdmin, setIsAdmin] = useState(true);
+  const [IsAdmin, setIsAdmin] = useState();
 
-  // GET Product
-  const fetchProducts = () => {
+  // GET User
+  const fetchUser = () => {
     axios.get(ApiUrl.Api + "Users")
       .then((response) => {
-        setPsers(response.data);
+        setUsers(response.data);
       })
       .catch((error) => {
         console.error("Error", error);
@@ -25,17 +25,17 @@ const AdUser = () => {
   };
   
   useEffect(() => {
-    fetchProducts();
+    fetchUser();
   }, []);
 
-  // POST Product
+  // POST User
   const addClick = () => {
     setModalTitle("Thêm mới tài khoảng");
     setId(0);
     setUsername("");
     setPassword("");
     setEmail("");
-    setIsAdmin(false);
+    setIsAdmin();
   };
 
   const createClick = () => {
@@ -46,7 +46,7 @@ const AdUser = () => {
       isAdmin: IsAdmin
     };
 
-    axios.post(ApiUrl.Api + 'Users', requestBody)
+    axios.post(ApiUrl.Api + 'Users/Signup', requestBody)
       .then(response => {
         console.log(response.data);
         alert("Thêm tài khoảng thành công!");
@@ -58,8 +58,8 @@ const AdUser = () => {
       });
   };
 
-  // PUT Product
-  const editProduct = (user) => {
+  // PUT User IsAdmin
+  const editUser = (user) => {
     setModalTitle("Cập nhật tài khoảng");
     setId(user.id);
     setUsername(user.username);
@@ -68,31 +68,28 @@ const AdUser = () => {
     setIsAdmin(user.isAdmin);
   };
 
-  const updateProduct = () => {
+  const updateUser = () => {
     const requestBody = {
       id: id,
-      username: Username,
-      password: Password,
-      email: Email,
       isAdmin: IsAdmin,
     };
-
-    axios.put(ApiUrl.Api + "Users/" + id, requestBody)
+  
+    axios.put(ApiUrl.Api + "Users/ChangeIsAdmin/" + id, requestBody)
       .then((response) => {
         console.log(response.data);
-        alert("Cập nhật danh mục thành công!");
         window.location.href = "/admin/accounts";
       })
       .catch((error) => {
         console.error(error.response.data);
-        alert("Cập nhật danh mục thất bại!");
+        alert("Cập nhật tài khoảng thất bại!");
       });
   };
+  
 
-  // DELETE Product
-  const deleteProduct = (id) => {
+  // DELETE User
+  const deleteUser = (id) => {
     if (window.confirm('Bạn có muốn xóa danh mục không?')) {
-      axios.delete(ApiUrl.Api + "Users/" + id)
+      axios.delete(ApiUrl.Api + "Users/DeleteUser/" + id)
         .then((response) => {
           console.log(response.data);
           window.location.href = "/admin/accounts";
@@ -141,7 +138,7 @@ const AdUser = () => {
                     <button type="button" className="bth bth-light mr-1"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      onClick={() => editProduct(user)}>
+                      onClick={() => editUser(user)}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                         <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
@@ -149,7 +146,7 @@ const AdUser = () => {
                     </button>
 
                     <button type="button" className="bth bth-light mr-1"
-                      onClick={() => deleteProduct(user.id)}>
+                      onClick={() => deleteUser(user.id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                       </svg>
@@ -203,7 +200,7 @@ const AdUser = () => {
                   Tạo tài khoảng
                 </button>
                 :
-                <button type="button" className="btn btn-primary float-start" onClick={updateProduct}>
+                <button type="button" className="btn btn-primary float-start" onClick={updateUser}>
                   Cập nhật tài khoảng
                 </button>
               }

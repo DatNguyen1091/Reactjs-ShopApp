@@ -3,6 +3,7 @@ import axios from "axios";
 import Sidebar from "./adminConstants/Sidebar";
 import Sidenav from "./adminConstants/Sidenav";
 import { ApiUrl } from '../layout/constants/ApiUrl';
+import  axiosWithAuth  from '../account/axiosWithAuth';
 
 const AdCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -11,9 +12,9 @@ const AdCategory = () => {
   const [Name, setName] = useState("");
   const [IsDeleted, setIsDeleted] = useState(true);
 
-  // GET Product
+  // GET Category
   const fetchCategory = () => {
-    axios.get(ApiUrl.Api + "Category")
+    axiosWithAuth().get(ApiUrl.Api + "Category")
       .then((response) => {
         setCategories(response.data);
       })
@@ -26,7 +27,7 @@ const AdCategory = () => {
     fetchCategory();
   }, []);
 
-  // POST Product
+  // POST Category
   const addClick = () => {
     setModalTitle("Thêm mới danh mục");
     setId(0);
@@ -40,7 +41,7 @@ const AdCategory = () => {
       isDeleted: IsDeleted
     };
 
-    axios.post(ApiUrl.Api + 'Category', requestBody)
+    axiosWithAuth().post(ApiUrl.Api + 'Category', requestBody)
       .then(response => {
         console.log(response.data);
         alert("Thêm danh mục thành công!");
@@ -52,15 +53,15 @@ const AdCategory = () => {
       });
   };
 
-  // PUT Product
-  const editProduct = (product) => {
+  // PUT Category
+  const editCategory = (category) => {
     setModalTitle("Cập nhật danh mục");
-    setId(product.id);
-    setName(product.name);
-    setIsDeleted(product.isDeleted);
+    setId(category.id);
+    setName(category.name);
+    setIsDeleted(category.isDeleted);
   };
 
-  const updateProduct = () => {
+  const updateCategory = () => {
     const requestBody = {
       id: id,
       name: Name,
@@ -79,8 +80,8 @@ const AdCategory = () => {
       });
   };
 
-  // DELETE Product
-  const deleteProduct = (id) => {
+  // DELETE Category
+  const deleteCategory = (id) => {
     if (window.confirm('Bạn có muốn xóa danh mục không?')) {
       axios.delete(ApiUrl.Api + "Category/" + id)
         .then((response) => {
@@ -127,7 +128,7 @@ const AdCategory = () => {
                     <button type="button" className="bth bth-light mr-1"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      onClick={() => editProduct(category)}>
+                      onClick={() => editCategory(category)}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                         <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
@@ -135,7 +136,7 @@ const AdCategory = () => {
                     </button>
 
                     <button type="button" className="bth bth-light mr-1"
-                      onClick={() => deleteProduct(category.id)}>
+                      onClick={() => deleteCategory(category.id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                       </svg>
@@ -168,7 +169,7 @@ const AdCategory = () => {
                   Tạo danh mục
                 </button>
                 :
-                <button type="button" className="btn btn-primary float-start" onClick={updateProduct}>
+                <button type="button" className="btn btn-primary float-start" onClick={updateCategory}>
                   Cập nhật danh mục
                 </button>
               }
