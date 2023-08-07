@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Footer2 from "../layout/constants/Footer2";
 import axios from 'axios';
+import jwt_decode from 'jwt-decode'; 
 import { ApiUrl } from '../layout/constants/ApiUrl';
 
 const Login = () => {
@@ -29,6 +30,12 @@ const Login = () => {
           localStorage.setItem('accessToken', token);
           setIsLoggedIn(true);
           localStorage.setItem('isLoggedIn', 'true');
+
+          // Giải mã token để lấy thông tin người dùng
+          const decodedToken = jwt_decode(token);
+          const usernameFromToken = decodedToken.unique_name; 
+          localStorage.setItem('UsernameLogin', usernameFromToken);
+            
           console.log(response.data);
           window.location.href = '/home';
         })
