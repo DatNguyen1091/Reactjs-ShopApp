@@ -20,6 +20,8 @@ const Login = () => {
         };
         axios.post(ApiUrl.Api + 'Users/Login', loginData)
         .then(response => {
+          const token = response.data.data;
+          localStorage.setItem('accessToken', token);
           console.log(response.data);
           window.location.href = '/home';
         })
